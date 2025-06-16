@@ -8,7 +8,7 @@ const BabyHog = ({ eyeColor, hobby, name }) => {
   let [weight, setWeight] = useState(0)
   let [imgHeight, setImgHeight] = useState(200)
 
-  function handleChangeWeight(e) {
+  const handleChangeWeight = (e) => {
     console.log(e.target.name)
     if (e.target.name === '+') {
       setWeight(weight += 1)

@@ -1,7 +1,8 @@
 import React from "react";
 import HogBoss from "./HogBoss";
 
-function App() {
+const App = () => {
+
   return (
     <div className="App">
       <HogBoss />

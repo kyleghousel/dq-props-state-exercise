@@ -9,15 +9,30 @@ const BabyHog = ({ eyeColor, hobby, name }) => {
   let [imgHeight, setImgHeight] = useState(200)
 
   const handleChangeWeight = (e) => {
-    console.log(e.target.name)
-    if (e.target.name === '+') {
-      setWeight(weight += 1)
-      setImgHeight(imgHeight += 10)
-    } else if (e.target.name === '-') {
-      setWeight(weight -= 1)
-      setImgHeight(imgHeight -= 10)
-    } else {
-      console.log('Error: Cannot change weight.')
+    switch (e.target.name) {
+      case '+':
+        setWeight(weight += 1)
+        setImgHeight(imgHeight += 10)
+        break;
+      case '-':
+        setWeight(weight -= 1)
+        setImgHeight(imgHeight -= 10)
+        break;
+      default:
+        console.log('Something went wrong.')
+    }
+  }
+
+  const handleEyeColor = (eyeColor) => {
+    switch (eyeColor) {
+      case 'sun':
+        return SunBaby
+      case 'blue':
+        return BlueBaby
+      case 'glowing':
+        return GlowingBaby
+      default:
+        return normalBaby
     }
   }
 
@@ -33,12 +48,7 @@ const BabyHog = ({ eyeColor, hobby, name }) => {
 
       <div className="hb-wrap">
         <img
-          src={
-            eyeColor === 'sun' ? SunBaby :
-            eyeColor === 'blue' ? BlueBaby :
-            eyeColor === 'glowing' ? GlowingBaby :
-            normalBaby
-          }
+          src={handleEyeColor(eyeColor)}
           style={{ height: `${imgHeight}px` }}
           alt="MasterBlasterJrJr"
         />
